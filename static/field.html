@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="js/HexagonTools/HexagonTools.js"></script>
-    <script type="text/javascript" src="js/HexagonTools/Grid.js"></script>
-    <script type="text/javascript" src="js/HexagonTools/HexCalcs.js"></script>
+    <script type="text/javascript" src="js/jquery-2.0.2.js"></script>
+    <script type="text/javascript" src="js/lib/HexagonTools/js/HexagonTools.js"></script>
+    <script type="text/javascript" src="js/lib/HexagonTools/js/Grid.js"></script>
+    <script type="text/javascript" src="js/lib/HexagonTools/js/HexCalcs.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+	    $("#hexCanvas").mousemove(function(event) {
+		    var msg = "Handler for .mousemove() called at ";
+		    msg += event.pageX + ", " + event.pageY;
+		    console.log(msg);
+	    });
+    });
+    </script>
 </head>
 <body>
     <div>
