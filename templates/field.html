@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>field</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <div>Dump: {{ data }}</div>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %}Field{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Field</h1>
+    <p class="important">
+        Welcome on my awesome homepage.
+    </p>
+{% endblock %}
