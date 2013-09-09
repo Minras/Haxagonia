@@ -3,15 +3,15 @@ Haxagonia
 
 Browser game with many-to-many battles on a hexagon field
 
-## Third-party libraries used:
+## Third-party libraries used
 
-### Twitter Bootstrap
+**Twitter Bootstrap**
 
 Source: https://github.com/twbs/bootstrap
 
 Directory: /static/twbs
 
-### HexagonTools
+**HexagonTools**
 
 Source: https://github.com/mpalmerlee/HexagonTools
 
