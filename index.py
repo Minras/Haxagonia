@@ -16,7 +16,7 @@ def show_user_profile(username):
     return 'Viewing profile of %s' % username
 
 @app.route('/field')
-def index():
+def field():
     return render_template('field.html', data='xxx')
 
 if __name__ == '__main__':
