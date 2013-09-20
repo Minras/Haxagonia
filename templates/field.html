@@ -6,10 +6,24 @@
     {{ super() }}
     <style type="text/css">
         .example { color: #336699; }
+        .box { border: 1px #FF0000 solid; }
     </style>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/HexagonTools/js/HexagonTools.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/HexagonTools/js/Grid.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        HT.Hexagon.Config.DEBUG = true;
+    	fillRectangle('cBg');
+    });
+    </script>
 {% endblock %}
 
 {% block content %}
     <h1>Field</h1>
     <p class="lead">Here be field.</p>
+    <canvas id="cBg" width="800" height="600" class="box" style="width:800px;height:600px" />
 {% endblock %}
