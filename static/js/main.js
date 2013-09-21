@@ -1,23 +1,31 @@
 /**
  * Fill canvas element with hexes
- *
- * @param string canvasId ID of the canvas element
+ * @param {string} canvasId ID of the canvas element
  */
-function fillRectangle(canvasId) {
+function fillRectangle(canvasId)
+{
     initHex();
     drawHexGrid(canvasId);
 }
 
 /**
  * Draw hexagons in canvas element
- * @param string canvasId ID of the canvas element
+ * @param {string} canvasId ID of the canvas element
  */
-function drawHexGrid(canvasId) {
+function drawHexGrid(canvasId)
+{
+    // define grid dimentions
     var w = $("#"+canvasId).width(),
         h = $("#"+canvasId).height();
+
+    // create grid object
     var grid = new HT.Grid(w, h);
+
+    // get canvas object
     var canvas = document.getElementById(canvasId);
     var ctx = canvas.getContext('2d');
+
+    // draw hex grid
     ctx.clearRect(0, 0, w, h);
     for(var hex in grid.Hexes) {
         grid.Hexes[hex].draw(ctx);
@@ -27,7 +35,8 @@ function drawHexGrid(canvasId) {
 /**
  * Initialize hexagon parameters
  */
-function initHex() {
+function initHex()
+{
     var z = 50; // parseFloat(document.getElementById("sideLength").value);
     var r = 1.1547005383792515290182975610039; // parseFloat(document.getElementById("whRatio").value);
 
