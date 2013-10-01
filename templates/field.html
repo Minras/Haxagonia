@@ -16,8 +16,20 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        HT.Hexagon.Static.DEBUG = false;
+        HT.Hexagon.Static.DEBUG = true;
     	fillRectangle('cBg');
+        var currentHex = null;
+        $("#cBg").on("click", function() {
+            var p = new HT.Point(event.offsetX, event.offsetY);
+            var h = grid.GetHexAt(p);
+            var i = 0;
+
+            console.log(
+                event.pageX + " " + event.pageY + "/" +
+                event.offsetX + " " + event.offsetY + "/" +
+                (event.pageX - event.offsetX) + " " + (event.pageY - event.offsetY)
+            );
+        });
     });
     </script>
 {% endblock %}
