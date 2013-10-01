@@ -1,4 +1,10 @@
 /**
+ * Define the Grid object
+ * @type {HT.Grid}
+ */
+var grid = null;
+
+/**
  * Fill canvas element with hexes
  * @param {string} canvasId ID of the canvas element
  */
@@ -19,7 +25,7 @@ function drawHexGrid(canvasId)
         h = $("#"+canvasId).height();
 
     // create grid object
-    var grid = new HT.Grid(w, h);
+    grid = new HT.Grid(w, h);
 
     // get canvas object
     var canvas = document.getElementById(canvasId);
@@ -89,21 +95,18 @@ function findHexWithWidthAndHeight()
 
 function getHexGridWH()
 {
-	findHexWithWidthAndHeight();
-	drawHexGrid();
+    findHexWithWidthAndHeight();
+    drawHexGrid();
 }
 
 function changeOrientation()
 {
-	if(document.getElementById("hexOrientationNormal").checked)
-	{
-		HT.Hexagon.Static.ORIENTATION = HT.Hexagon.Orientation.Normal;
-	}
-	else
-	{
-		HT.Hexagon.Static.ORIENTATION = HT.Hexagon.Orientation.Rotated;
-	}
-	drawHexGrid();
+    if(document.getElementById("hexOrientationNormal").checked) {
+        HT.Hexagon.Static.ORIENTATION = HT.Hexagon.Orientation.Normal;
+    } else {
+        HT.Hexagon.Static.ORIENTATION = HT.Hexagon.Orientation.Rotated;
+    }
+    drawHexGrid();
 }
 
 function debugHexZR()
