@@ -11,6 +11,25 @@ var grid = null;
 var gridActions = null;
 
 /**
+ * Clear the canvas preserving it's transformations
+ * @param {CanvasRenderingContext2D} Context
+ * @param {integer} Canvas width
+ * @param {integer} Canvas height
+ */
+function clearCanvas(ctx, w, h)
+{
+    // Store the current transformation matrix
+    ctx.save();
+
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    // Restore the transform
+    ctx.restore();
+}
+
+/**
  * Initialize the project grids (canvas)
  */
 function initGrids()
