@@ -17,7 +17,8 @@
     <script type="text/javascript">
     $(document).ready(function() {
         HT.Hexagon.Static.DEBUG = true;
-    	fillRectangle('cBg');
+        initGrids();
+    	drawHexGrid('cBg');
         var currentHex = null;
         $("#cBg").on("click", function() {
             var p = new HT.Point(event.offsetX, event.offsetY);
@@ -25,6 +26,20 @@
             var i = 0;
 
             console.log(
+                "Bg: " +
+                event.pageX + " " + event.pageY + "/" +
+                event.offsetX + " " + event.offsetY + "/" +
+                (event.pageX - event.offsetX) + " " + (event.pageY - event.offsetY)
+            );
+        });
+
+        $("#cAct").on("click", function() {
+            var p = new HT.Point(event.offsetX, event.offsetY);
+            var h = grid.GetHexAt(p);
+            var i = 0;
+
+            console.log(
+                "Act: " +
                 event.pageX + " " + event.pageY + "/" +
                 event.offsetX + " " + event.offsetY + "/" +
                 (event.pageX - event.offsetX) + " " + (event.pageY - event.offsetY)
@@ -37,5 +52,12 @@
 {% block content %}
     <h1>Field</h1>
     <p class="lead">Here be field.</p>
-    <canvas id="cBg" width="800" height="600" class="box" style="width:800px;height:600px" />
+    <div id="grid-container">
+        <div>
+            <canvas id="cBg" width="800" height="600" class="grid-field" />
+        </div>
+        <div>
+            <canvas id="cAct" width="800" height="600" class="grid-actions" />
+        </div>
+    </div>
 {% endblock %}

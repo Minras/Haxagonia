@@ -5,13 +5,24 @@
 var grid = null;
 
 /**
- * Fill canvas element with hexes
- * @param {string} canvasId ID of the canvas element
+ * Define the Actions Grid object
+ * @type {HT.Grid}
  */
-function fillRectangle(canvasId)
+var gridActions = null;
+
+function initGrids()
 {
     initHex();
-    drawHexGrid(canvasId);
+
+    // define field grid dimentions
+    var w = $("#cBg").width(),
+        h = $("#cBg").height();
+    grid = new HT.Grid(w, h);
+
+    // define field grid dimentions
+    var w = $("#cAct").width(),
+        h = $("#cAct").height();
+    gridActions = new HT.Grid(w, h);
 }
 
 /**
@@ -23,9 +34,6 @@ function drawHexGrid(canvasId)
     // define grid dimentions
     var w = $("#"+canvasId).width(),
         h = $("#"+canvasId).height();
-
-    // create grid object
-    grid = new HT.Grid(w, h);
 
     // get canvas object
     var canvas = document.getElementById(canvasId);
