@@ -10,6 +10,9 @@ var grid = null;
  */
 var gridActions = null;
 
+/**
+ * Initialize the project grids (canvas)
+ */
 function initGrids()
 {
     initHex();
