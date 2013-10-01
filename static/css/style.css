@@ -6,3 +6,32 @@ body {
   text-align: center;
 }
 
+#grid-container {
+    /* border: 1px solid red; */
+    height: 600px; width: 800px;
+    margin: 0;
+    position: relative;
+}
+
+#grid-container > div {
+    position: absolute;
+    z-index: 10;
+    left: 0; top: 0;
+    height: 600px; width: 800px;
+}
+
+#grid-container > div > canvas.grid-field {
+    position: absolute;
+    z-index: 100;
+    left: 0; top: 0;
+    height: 600px; width: 800px;
+    border: 1px solid blue;
+}
+
+#grid-container > div > canvas.grid-actions {
+    position: absolute;
+    z-index: 200;
+    left: 100; top: 0;
+    height: 600px; width: 800px;
+    border: 1px solid green;
+}
