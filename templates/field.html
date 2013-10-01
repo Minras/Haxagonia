@@ -33,24 +33,28 @@
                 return;
             }
 
+            console.log("Click: " + h.id + "(" + h.PathCoOrdX + "," + h.PathCoOrdY + ")");
+
             // init currentHex with selected hex
-            if (null == currentHex || currentHex.id != h.id) {
+            if (null === currentHex) {
                 currentHex = h;
+            } else if (currentHex.id !== h.id) {
+                currentHex.selected = false;
+                currentHex = h;
+            } else {
+                // cliked already selected hex (currentHex.id === h.id)
+                currentHex.selected = false;
+                currentHex = null;
             }
 
             // clear current actions canvas
             clearCanvas(ctxAct, canvasAct.width, canvasAct.height);
 
-            // draw selected hex
-            currentHex.selected = true;
-            currentHex.draw(ctxAct);
-
-            console.log(
-                "Act: " +
-                event.pageX + " " + event.pageY + "/" +
-                event.offsetX + " " + event.offsetY + "/" +
-                (event.pageX - event.offsetX) + " " + (event.pageY - event.offsetY)
-            );
+            if (null !== currentHex) {
+                // draw selected hex
+                currentHex.selected = true;
+                currentHex.draw(ctxAct);
+            }
         });
     });
     </script>
