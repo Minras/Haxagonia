@@ -1,0 +1,3 @@
+[submodule "static/js/HexagonEngine"]
+	path = static/js/HexagonEngine
+	url = git@github.com:Minras/HexagonEngine.git
