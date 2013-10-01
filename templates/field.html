@@ -4,10 +4,6 @@
 
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .example { color: #336699; }
-        .box { border: 1px #FF0000 solid; }
-    </style>
 {% endblock %}
 
 {% block javascript %}
@@ -16,27 +12,38 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+        var currentHex = null,
+            canvasField = document.getElementById('cBg'),
+            ctxField = canvasField.getContext('2d'),
+            canvasAct = document.getElementById('cAct'),
+            ctxAct = canvasAct.getContext('2d');
+
         HT.Hexagon.Static.DEBUG = true;
+
         initGrids();
     	drawHexGrid('cBg');
-        var currentHex = null;
-        $("#cBg").on("click", function() {
-            var p = new HT.Point(event.offsetX, event.offsetY);
-            var h = grid.GetHexAt(p);
-            var i = 0;
-
-            console.log(
-                "Bg: " +
-                event.pageX + " " + event.pageY + "/" +
-                event.offsetX + " " + event.offsetY + "/" +
-                (event.pageX - event.offsetX) + " " + (event.pageY - event.offsetY)
-            );
-        });
 
         $("#cAct").on("click", function() {
             var p = new HT.Point(event.offsetX, event.offsetY);
-            var h = grid.GetHexAt(p);
-            var i = 0;
+            var h = gridActions.GetHexAt(p);
+
+            // stop executing if the user clicked outside the hexes
+            if (null == h) {
+                console.log("Click: outside the hex grid");
+                return;
+            }
+
+            // init currentHex with selected hex
+            if (null == currentHex || currentHex.id != h.id) {
+                currentHex = h;
+            }
+
+            // clear current actions canvas
+            clearCanvas(ctxAct, canvasAct.width, canvasAct.height);
+
+            // draw selected hex
+            currentHex.selected = true;
+            currentHex.draw(ctxAct);
 
             console.log(
                 "Act: " +
