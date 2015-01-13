@@ -30,6 +30,33 @@ function clearCanvas(ctx, w, h)
 }
 
 /**
+ * Load player groups data
+ * @param {int} battle_id
+ */
+function loadGroups(battle_id)
+{
+    data = [
+        {
+            name: 'Alliance',
+            players: [
+                ['Bjarn', [1, 2], 'human'],
+                ['Gnumlin', [2, 2], 'dwarf'],
+            ]
+        },
+        {
+            name: 'Horde',
+            players: [
+                ['Hrrr', [5, 5], 'orc'],
+                ['Herr', [5, 4], 'troll'],
+            ]
+        },
+    ];
+    for (group in data) {
+
+    }
+}
+
+/**
  * Initialize the project grids (canvas)
  */
 function initGrids()

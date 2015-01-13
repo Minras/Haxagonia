@@ -9,9 +9,13 @@
 {% block javascript %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/HexagonEngine/js/HexagonTools.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/HexagonEngine/js/Grid.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/player.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/team.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+        var teams = [];
+
         var currentHex = null,
             //canvasField = document.getElementById('cBg'),
             //ctxField = canvasField.getContext('2d'),
